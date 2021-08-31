@@ -7,9 +7,9 @@ import ar.edu.unlp.oo1.ejercicio1.WallPost;
  *
  */
 public class WallPostImpl implements WallPost {
-	String text;
-	int likes;
-	boolean featured;
+	private String text;
+	private int likes;
+	private boolean featured;
 	
 	/*
 	 * Este mensaje se utiliza para que una instancia de Wallpost se muestre de forma adecuada
