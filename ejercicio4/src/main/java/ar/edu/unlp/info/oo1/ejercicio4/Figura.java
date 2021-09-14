@@ -1,8 +1,8 @@
 package ar.edu.unlp.info.oo1.ejercicio4;
 
-public abstract class Figura {
+public interface Figura {
 	
-	abstract double getPerimetro();
+	double getPerimetro();
 	
-	abstract double getArea();
+	double getArea();
 }

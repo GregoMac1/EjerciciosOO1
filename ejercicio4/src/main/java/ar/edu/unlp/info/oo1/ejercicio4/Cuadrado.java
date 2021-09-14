@@ -1,6 +1,6 @@
 package ar.edu.unlp.info.oo1.ejercicio4;
 
-public class Cuadrado extends Figura{
+public class Cuadrado implements Figura{
 	private double lado;
 
 	public double getLado() {

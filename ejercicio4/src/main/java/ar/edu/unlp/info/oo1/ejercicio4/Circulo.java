@@ -1,6 +1,6 @@
 package ar.edu.unlp.info.oo1.ejercicio4;
 
-public class Circulo extends Figura{
+public class Circulo implements Figura{
 	private double radio;
 
 	public double getRadio() {
