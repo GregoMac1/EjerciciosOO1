@@ -5,11 +5,7 @@ import java.util.List;
 //import ar.edu.unlp.info.oo1.ejercicio3.Item;
 
 public class Balanza {
-	private List<Producto> productos;
-	
-	public Balanza() {
-		this.productos = new ArrayList<>();
-	}
+	private List<Producto> productos = new ArrayList<>();
 	
 	public List<Producto> getProductos(){
 		return this.productos;
@@ -36,7 +32,6 @@ public class Balanza {
 	}
 	
 	public Ticket emitirTicket() {
-		Ticket ticket = new Ticket(productos);
-		return ticket;
+		return new Ticket(productos);
 	}
 }
