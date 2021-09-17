@@ -75,22 +75,19 @@ public class Mamifero { //creo que esta todo bien pero no se como hacer que ance
 	}
 	
 	public boolean tieneComoAncestroA(Mamifero mamifero) {
-		if (this.equals(mamifero))
-			return true;
-		else {
-			if (this.getMadre() == null && this.getPadre() == null)
-				return false;
-			else {
-				if (this.getMadre() != null) {
-					if (this.getMadre().tieneComoAncestroA(mamifero))
-						return true;
-				}
-				if (this.getPadre() != null) {
-					if (this.getPadre().tieneComoAncestroA(mamifero))
-						return true;
-				}
-			}
-			return false;
+		boolean tienePorMadre = false, tienePorPadre = false;
+		if (this.getMadre() != null) {
+			if (this.getMadre().equals(mamifero))
+				return true;
+			else
+				tienePorMadre = this.getMadre().tieneComoAncestroA(mamifero);
 		}
+		if (this.getPadre() != null) {
+			if (this.getPadre().equals(mamifero))
+				return true;
+			else
+				tienePorPadre = this.getPadre().tieneComoAncestroA(mamifero);
+		}
+		return (tienePorMadre || tienePorPadre);
 	}
 }
