@@ -2,6 +2,7 @@ package ar.edu.unlp.info.oo1.ejercicio8;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Distribuidora {
 	private double precioKWh;
@@ -16,15 +17,15 @@ public class Distribuidora {
 	}
 	
 	public List<Factura> facturar() {
-		List<Factura> facturas = new ArrayList<>();
-		for (int i = 0; i < this.usuarios.size(); i++) {
-			facturas.add(usuarios.get(i).facturarEnBaseA(precioKWh));
-		}
-		return facturas;
+		return this.usuarios.stream().
+				map((Usuario usuario) -> usuario.facturarEnBaseA(precioKWh)).
+				collect(Collectors.toList());
 	}
 	
 	public double consumoTotalActiva() {
-		return this.usuarios.stream().mapToDouble(Usuario::ultimoConsumoActiva).sum();
+		return this.usuarios.stream().
+				mapToDouble(Usuario::ultimoConsumoActiva).
+				sum();
 	}
 	
 	public void precioKWh(double precio) {

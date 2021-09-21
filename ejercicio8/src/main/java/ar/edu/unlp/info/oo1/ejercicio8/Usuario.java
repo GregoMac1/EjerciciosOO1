@@ -27,6 +27,10 @@ public class Usuario {
 		this.consumos.add(medicion);
 	}
 	
+	public void agregarFactura(Factura factura){
+		this.facturas.add(factura);
+	}
+	
 	public double ultimoConsumoActiva() {
 		return this.ultimoConsumo().getConsumoEnergiaActiva();
 	}
