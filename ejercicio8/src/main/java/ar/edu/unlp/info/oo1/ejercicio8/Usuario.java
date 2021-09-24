@@ -2,6 +2,7 @@ package ar.edu.unlp.info.oo1.ejercicio8;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Usuario {
@@ -47,14 +48,8 @@ public class Usuario {
 	}
 	
 	public Consumo ultimoConsumo() {
-		LocalDate fecha = LocalDate.of(1, 1, 1);
-		Consumo consumo = null;
-		for (int i = 0; i < this.consumos.size(); i++) {
-			if (consumos.get(i).getFecha().isAfter(fecha)) {
-				fecha = consumos.get(i).getFecha();
-				consumo = consumos.get(i);
-			}
-		}
-		return consumo;
+		return consumos.stream().
+				max(Comparator.comparing((Consumo c) -> c.getFecha().toEpochDay())).
+				orElse(null);
 	}
 }
