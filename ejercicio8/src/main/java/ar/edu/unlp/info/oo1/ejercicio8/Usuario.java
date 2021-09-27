@@ -2,7 +2,6 @@ package ar.edu.unlp.info.oo1.ejercicio8;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Usuario {
@@ -33,13 +32,16 @@ public class Usuario {
 	}
 	
 	public double ultimoConsumoActiva() {
-		return this.ultimoConsumo().getConsumoEnergiaActiva();
+		return this.ultimoConsumo() != null ? 
+				this.ultimoConsumo().getConsumoEnergiaActiva() : 0;
 	}
 	
 	public Factura facturarEnBaseA(double precioKWh) {
 		return new Factura(LocalDate.now(), 
-				this.ultimoConsumo().costoEnBaseA(precioKWh), 
-				this.ultimoConsumo().factorDePotencia() > 0.8 ? 10 : 0, 
+				this.ultimoConsumo() != null ? 
+						this.ultimoConsumo().costoEnBaseA(precioKWh) : 0, 
+				this.ultimoConsumo() != null ? 
+						(this.ultimoConsumo().factorDePotencia() > 0.8 ? 10 : 0) : 0, 
 				this);
 	}
 
