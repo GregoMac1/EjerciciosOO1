@@ -49,7 +49,11 @@ public class Usuario {
 	
 	public Consumo ultimoConsumo() {
 		return consumos.stream().
+				max((Consumo c1, Consumo c2) -> c1.getFecha().compareTo(c2.getFecha())).
+				orElse(null);
+		/*return consumos.stream().
 				max(Comparator.comparing((Consumo c) -> c.getFecha().toEpochDay())).
 				orElse(null);
+		*/
 	}
 }
