@@ -28,4 +28,9 @@ public class DateLapseTarea3 implements DateLapse{
 		return (other.equals(this.from) || other.isAfter(this.from)) 
 				&& (other.equals(this.getTo()) || other.isBefore(this.getTo()));
 	}
+	
+	public boolean overlaps(DateLapse other) {
+		return (this.includesDate(other.getFrom()) || this.includesDate(other.getTo()))
+				|| (this.getFrom().isAfter(other.getFrom()) && this.getTo().isBefore(other.getTo()));
+	}
 }

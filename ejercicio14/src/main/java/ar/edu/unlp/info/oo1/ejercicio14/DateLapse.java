@@ -10,4 +10,6 @@ public interface DateLapse {
 	public int sizeInDays();
 	
 	public boolean includesDate(LocalDate other);
+	
+	public boolean overlaps(DateLapse other);
 }
