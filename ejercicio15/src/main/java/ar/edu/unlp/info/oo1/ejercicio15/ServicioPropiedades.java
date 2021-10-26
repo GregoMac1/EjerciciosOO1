@@ -1,5 +1,6 @@
 package ar.edu.unlp.info.oo1.ejercicio15;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import ar.edu.unlp.info.oo1.ejercicio14.DateLapse;
@@ -30,5 +31,12 @@ public class ServicioPropiedades {
 			reservas.addAll(p.getReservasDeUsuario(usuario));
 		}
 		return reservas;
+	}
+	
+	public double calcularIngresosDePropietario(Usuario usuario, LocalDate desde, LocalDate hasta) {
+		return this.propiedades.stream().
+				filter(p -> p.getPropietario().equals(usuario)).
+				mapToDouble(p -> p.getMontoEntreFechas(desde, hasta)).
+				sum();
 	}
 }

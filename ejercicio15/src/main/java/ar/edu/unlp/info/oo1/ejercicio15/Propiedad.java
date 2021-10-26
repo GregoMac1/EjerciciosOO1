@@ -42,7 +42,7 @@ public class Propiedad {
 	}
 	
 	public double calcularPrecio(Reserva reserva) {
-		return this.precio * reserva.getPeriodo().sizeInDays();
+		return reserva.calcularPrecio(this.precio);
 	}
 	
 	public boolean estaDisponible(DateLapse periodo) {
@@ -57,6 +57,12 @@ public class Propiedad {
 		return this.reservas.stream().
 				filter(r -> r.getInquilino().equals(usuario)).
 				toList();
+	}
+	
+	public double getMontoEntreFechas(LocalDate desde, LocalDate hasta) {
+		return this.reservas.stream().
+				mapToDouble(r -> r.getMontoEntreFechas(this.precio, desde, hasta)).
+				sum();
 	}
 
 	public String getNombre() {
