@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 
 import ar.edu.unlp.info.oo1.ejercicio14.DateLapse;
 
-public abstract class Reserva {
+public class Reserva {
 	private DateLapse periodo;
 	private Usuario inquilino;
 	
@@ -36,7 +36,4 @@ public abstract class Reserva {
 		}
 		return precio * cantDias;
 	}
-	
-	public abstract double getMontoAReembolsar(double precio);
-
 }

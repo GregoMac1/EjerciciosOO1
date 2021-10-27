@@ -11,32 +11,26 @@ public class Propiedad {
 	private double precio;
 	private String direccion;
 	private Usuario propietario;
+	private PoliticaDeCancelacion politica;
 	private List<Reserva> reservas = new ArrayList<>();
 	
 	public Propiedad(String nombre, String descrpicion, 
-			double precio, String direccion, Usuario propietario) {
+			double precio, String direccion, Usuario propietario, PoliticaDeCancelacion politica) {
 		this.nombre = nombre;
 		this.descripcion = descrpicion;
 		this.precio = precio;
 		this.direccion = direccion;
 		this.propietario = propietario;
+		this.politica = politica;
 	}
 	
 	public Usuario getPropietario() {
 		return this.propietario;
 	}
 	
-	public Reserva hacerReserva(DateLapse periodo, Usuario usuario, String politica) {
-		if (this.estaDisponible(periodo)) {
-			
-			Reserva reserva;
-			if (politica.equals("Flexible"))
-				reserva = new ReservaFlexible(periodo, usuario);
-			else if (politica.equals("Moderada"))
-				reserva = new ReservaModerada(periodo, usuario);
-			else
-				reserva = new ReservaEstricta(periodo, usuario);
-			
+	public Reserva hacerReserva(DateLapse periodo, Usuario usuario) {
+		if (this.estaDisponible(periodo)) {			
+			Reserva reserva = new Reserva(periodo, usuario);			
 			this.reservas.add(reserva);
 			return reserva;
 		}
@@ -71,6 +65,10 @@ public class Propiedad {
 		return this.reservas.stream().
 				mapToDouble(r -> r.getMontoEntreFechas(this.precio, desde, hasta)).
 				sum();
+	}
+	
+	public double getMontoAReembolsar(Reserva reserva, LocalDate fechaDeCancelacion) {
+		return this.politica.getMontoAReembolsar(reserva, this.precio, fechaDeCancelacion);
 	}
 
 	public String getNombre() {
