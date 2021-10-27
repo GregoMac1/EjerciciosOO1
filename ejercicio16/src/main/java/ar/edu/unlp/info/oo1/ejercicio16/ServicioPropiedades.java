@@ -15,8 +15,16 @@ public class ServicioPropiedades {
 		return p;
 	}
 	
-	public Reserva hacerReserva(Propiedad propiedad, DateLapse periodo, Usuario usuario, String politica) {
-		return propiedad.hacerReserva(periodo, usuario, politica);
+	public Reserva hacerReservaEstricta(Propiedad propiedad, DateLapse periodo, Usuario usuario) {
+		return propiedad.hacerReserva(periodo, usuario, "Estricta");
+	}
+	
+	public Reserva hacerReservaModerada(Propiedad propiedad, DateLapse periodo, Usuario usuario) {
+		return propiedad.hacerReserva(periodo, usuario, "Moderada");
+	}
+	
+	public Reserva hacerReservaFlexible(Propiedad propiedad, DateLapse periodo, Usuario usuario) {
+		return propiedad.hacerReserva(periodo, usuario, "Flexible");
 	}
 	
 	public List<Propiedad> getPropiedadesDisponibles(DateLapse periodo) {
