@@ -28,6 +28,10 @@ public class Propiedad {
 		return this.propietario;
 	}
 	
+	public List<Reserva> getReservas() {
+		return this.reservas;
+	}
+	
 	public Reserva hacerReserva(DateLapse periodo, Usuario usuario) {
 		if (this.estaDisponible(periodo)) {			
 			Reserva reserva = new Reserva(periodo, usuario);			

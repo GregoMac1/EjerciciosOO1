@@ -20,6 +20,10 @@ public class ServicioPropiedades {
 		return propiedad.hacerReserva(periodo, usuario);
 	}
 	
+	public List<Propiedad> getPropiedades() {
+		return this.propiedades;
+	}
+	
 	public List<Propiedad> getPropiedadesDisponibles(DateLapse periodo) {
 		return this.propiedades.stream().
 				filter(p -> p.estaDisponible(periodo)).
