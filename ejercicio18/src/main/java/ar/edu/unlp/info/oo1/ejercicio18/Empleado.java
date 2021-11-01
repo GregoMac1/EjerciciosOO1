@@ -32,6 +32,7 @@ public class Empleado {
 	
 	public Contrato getContratoActual() {
 		return this.contratos.stream().
+				filter(c -> c.getFechaInicio().isBefore(LocalDate.now())).
 				max((Contrato c1, Contrato c2) -> c1.getFechaInicio().compareTo(c2.getFechaInicio())).
 				orElse(null);
 	}
